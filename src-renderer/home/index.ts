@@ -43,23 +43,26 @@ const createMapList = (): HTMLUListElement => {
 };
 
 const addMapToList = ({ listElement, mapPath, imgSrc, title, author }: MapListInfo) => {
-  const button = listElement.appendChild(document.createElement('li')).appendChild(document.createElement(`button`));
+  const hexShape = listElement.appendChild(document.createElement('li')).appendChild(document.createElement(`div`));
+  hexShape.classList.add('hex-shape');;
+  const button = hexShape.appendChild(document.createElement('button'));
   button.addEventListener('click', () => window.electronAPI.navigateToMap(mapPath));
   button.classList.add('level-button');
   const image = button.appendChild(document.createElement('img')) as HTMLImageElement;
   image.src = imgSrc;
-  image.height = 192;
-  image.width = 192;
+  // image.height = 192;
+  // image.width = 192;
   image.classList.add('level-image');
-  const infoContainer = button.appendChild(document.createElement('div')) as HTMLDivElement;
-  infoContainer.classList.add('info-container');
-  const mapName = infoContainer.appendChild(document.createElement('span')) as HTMLSpanElement;
-  mapName.textContent = title;
-  mapName.classList.add('level-name');
-  if (author) {
-    const authorText = infoContainer.appendChild(document.createElement('span')) as HTMLSpanElement;
-    authorText.textContent = author;
-  }
+  // const infoContainer = button.appendChild(document.createElement('div')) as HTMLDivElement;
+  // infoContainer.classList.add('info-container');
+  // const mapName = infoContainer.appendChild(document.createElement('span')) as HTMLSpanElement;
+  // mapName.textContent = title;
+  // mapName.classList.add('level-name');
+  // if (author) {
+  //   const authorText = infoContainer.appendChild(document.createElement('span')) as HTMLSpanElement;
+  //   authorText.textContent = author;
+  //   authorText.classList.add('author-name');
+  // }
 };
 
 const renderPage = async () => {
